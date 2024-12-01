@@ -8,6 +8,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react'
 import loadingAnimation from '../src/assets/loadingAnimation.gif';
 import MovieDetailsPage from './pages/MovieDetailsPage'
+import AdminAuthProvider from './handles/AdminAuthProvider'
+import AdminRoutePage from './pages/AdminRoutePage'
+import AddMovies from './components/AdminPageComp/AddMovies'
+import DetailsPage from './components/AdminPageComp/DetailsPage'
+import RemoveMovies from './components/AdminPageComp/RemoveMovies'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +34,25 @@ const router = createBrowserRouter([
     path: 'movie/:movie_id',
     element: <MovieDetailsPage />,
     errorElement: <ErrorPage />
+  },
+  {
+    path: 'admin',
+    element: <AdminRoutePage />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '',
+        element: <AddMovies />
+      },
+      {
+        path: 'details',
+        element: <DetailsPage />
+      },
+      {
+        path: 'removeMovies',
+        element: <RemoveMovies />
+      }
+    ]
   }
 ])
 
@@ -59,10 +83,12 @@ const App = () => {
           <img src={loadingAnimation} alt="loadingAnimation" />
         </div>
       ): (
-        <AuthProvider>
-          <ToastContainer limit={5} position='top-left' />
-          <RouterProvider router={router} />
-        </AuthProvider>
+        <AdminAuthProvider>
+          <AuthProvider>
+            <ToastContainer limit={5} position='top-left' />
+            <RouterProvider router={router} />
+          </AuthProvider>
+        </AdminAuthProvider>
       )}
     </>
   )

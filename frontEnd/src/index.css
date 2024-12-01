@@ -34,3 +34,17 @@ html{
     -ms-overflow-style: none;
     scrollbar-width: none;
 } 
+
+
+@layer utilities {
+    .no-button-in-input {
+      -moz-appearance: textfield;
+    }
+    
+    .no-button-in-input::-webkit-outer-spin-button,
+    .no-button-in-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  

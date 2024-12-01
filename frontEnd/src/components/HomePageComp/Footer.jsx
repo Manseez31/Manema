@@ -98,15 +98,15 @@ const Footer = () => {
         </div>
 
 
-      {/* <div className='h-auto w-full flex flex-col justify-center items-center gap-12 mt-24'>
-          <h1 className='text-3xl font-bold'>Developed For</h1>
+      <div className='h-auto w-full flex flex-col justify-center items-center gap-12 mt-24'>
+          <h1 className='text-3xl font-bold'>Developed By</h1>
           <div className='h-auto w-full flex justify-around font-playwrite'>
-              <h3 className='hover:text-yellow-400 transition-hover duration-150 cursor-default '>Pranaya Basukala</h3>
               <h3 className='hover:text-yellow-400 transition-hover duration-150 cursor-default '>Manseez Bahadur Pradhan</h3>
+              <h3 className='hover:text-yellow-400 transition-hover duration-150 cursor-default '>Pranaya Basukala</h3>
               <h3 className='hover:text-yellow-400 transition-hover duration-150 cursor-default '>Riju Phaiju</h3>
               <h3 className='hover:text-yellow-400 transition-hover duration-150 cursor-default '>Salon Raut</h3>
           </div>
-      </div> */}
+      </div>
         
 
     </div>

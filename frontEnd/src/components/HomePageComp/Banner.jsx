@@ -44,63 +44,61 @@ const Banner = () => {
   
     fetchMovies();
   }, [contextMovies]);
-      
     
-    const changeMovie = () => {
-      gsap.to(bannerBackground.current, {
+  const changeMovie = () => {
+    gsap.to(bannerBackground.current, {
+      opacity: 0,
+      duration: 0.2,
+      ease: 'power1.in',
+    })
+    setTimeout(() => {
+      const randomIndex = Math.floor(Math.random() * movies.length);
+      setDisplayMovie(movies[randomIndex]);
+    }, 500);
+    gsap.to(bannerBackground.current, {
+      delay: 0.5,
+      x: 0,
+      opacity: 1,
+      duration: 0.4,
+      ease: 'power1.in',
+  })}
+
+
+  useGSAP(() => {
+
+    const bannerTimeline = gsap.timeline();
+
+    if(!animationPlayed){
+      bannerTimeline.fromTo(bannerBackground.current, {
         opacity: 0,
-        duration: 0.2,
-        ease: 'power1.in',
-      })
-      setTimeout(() => {
-        const randomIndex = Math.floor(Math.random() * movies.length);
-        setDisplayMovie(movies[randomIndex]);
-      }, 500);
-      gsap.to(bannerBackground.current, {
-        delay: 0.5,
-        x: 0,
+        clipPath: 'polygon(50% 0%,50% 0%, 50% 100%, 50% 100%)',
+      }, {
+        clipPath: 'polygon(0% 0%,100% 0%, 100% 100%, 0% 100%)',
         opacity: 1,
-        duration: 0.4,
-        ease: 'power1.in',
+        duration: 3,
+        ease: 'power1.out',
       })
+
+      gsap.fromTo(bannerBackgroundTwo.current, {
+        opacity: 0,
+      }, {
+        opacity: 1,
+        duration: 1.5,
+        ease: 'power1.out',
+      }, "-=2")
+      
+      bannerTimeline.fromTo(bannerDetails.current.children, {
+        opacity: 0,
+      }, {
+        delay: 0.8,
+        opacity: 1,
+        duration: 1,
+        ease: 'power1.out',
+      }, "-=2")
+      setAnimationPlayed(true);
     }
 
-
-    useGSAP(() => {
-
-      const bannerTimeline = gsap.timeline();
-
-      if(!animationPlayed){
-        bannerTimeline.fromTo(bannerBackground.current, {
-          opacity: 0,
-          clipPath: 'polygon(50% 0%,50% 0%, 50% 100%, 50% 100%)',
-        }, {
-          clipPath: 'polygon(0% 0%,100% 0%, 100% 100%, 0% 100%)',
-          opacity: 1,
-          duration: 3,
-          ease: 'power1.out',
-        })
-  
-        gsap.fromTo(bannerBackgroundTwo.current, {
-          opacity: 0,
-        }, {
-          opacity: 1,
-          duration: 1.5,
-          ease: 'power1.out',
-        }, "-=2")
-        
-        bannerTimeline.fromTo(bannerDetails.current.children, {
-          opacity: 0,
-        }, {
-          delay: 0.8,
-          opacity: 1,
-          duration: 1,
-          ease: 'power1.out',
-        }, "-=2")
-        setAnimationPlayed(true);
-      }
-
-    }, []);
+  }, []);
 
 
 
