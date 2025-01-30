@@ -34,10 +34,10 @@ const Header = () => {
             <FontAwesomeIcon icon={faPlusMinus} />
             <span>Add Movies</span>
             </Link>
-            <Link className='text-orange-600 hover:text-orange-400 flex justify-center items-center gap-2 px-4 py-2 hover:bg-gray-800' to={'details'}>
+            {/* <Link className='text-orange-600 hover:text-orange-400 flex justify-center items-center gap-2 px-4 py-2 hover:bg-gray-800' to={'details'}>
             <FontAwesomeIcon icon={faCircleInfo} />
             <span>Show Details</span>
-            </Link>
+            </Link> */}
             <Link className='text-orange-600 hover:text-orange-400 flex justify-center items-center gap-2 px-4 py-2 hover:bg-gray-800' to={'removeMovies'}>
             <FontAwesomeIcon icon={faPlusMinus} />
             <span>Remove Movies</span>

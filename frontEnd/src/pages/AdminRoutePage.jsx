@@ -18,7 +18,7 @@ const AdminRoutePage = () => {
     useLayoutEffect(() => {
 
         const refreshToken = localStorage.getItem('refreshToken');
-        const accessToken = localStorage.getItem('refreshToken');
+        const accessToken = localStorage.getItem('accessToken');
         if(refreshToken && accessToken) {
             setIsAdminLoggedIn(true);
         }
@@ -90,7 +90,7 @@ const AdminRoutePage = () => {
             <AdminDashBoard />
         ): (
         <div className='h-screen w-screen flex flex-col gap-4 justify-center items-center bg-theme-dark'>
-            <form onSubmit={logIn} className='h-[60vh] w-[26%] rounded-xl shadow-dense bg-gray-950 flex flex-col gap-10 px-4 py-2 items-center relative' >
+            <form onSubmit={logIn} className='h-[50vh] w-[26%] rounded-xl shadow-dense bg-gray-950 flex flex-col gap-10 px-4 py-2 items-center relative' >
                 <div className='mb-4 mt-2'>
                     <h1 className='text-2xl text-center font-bold text-gray-200'>Hey There Admin !</h1>
                 </div>
@@ -108,7 +108,7 @@ const AdminRoutePage = () => {
                     </label>
                     <input value={formData.password} onChange={handleInputs} type="password"  name='password' className='bg-gray-950 border-b border-orange-500 p-2 focus:outline-none w-full text-gray-400' autoComplete='off'/>
                 </div>
-                <div className='flex flex-col justify-center items-center h-[8%] w-[85%]'>
+                <div className='flex flex-col justify-center items-center h-[10%] w-[85%]'>
                     <button onClick={logIn} type='submit' className='w-full bg-orange-500 text-black rounded h-[100%] hover:bg-yellow-500 font-medium flex justify-center items-center'>
                         {loading ? (
                             <Vortex

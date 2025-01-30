@@ -11,8 +11,10 @@ import MovieDetailsPage from './pages/MovieDetailsPage'
 import AdminAuthProvider from './handles/AdminAuthProvider'
 import AdminRoutePage from './pages/AdminRoutePage'
 import AddMovies from './components/AdminPageComp/AddMovies'
-import DetailsPage from './components/AdminPageComp/DetailsPage'
-import RemoveMovies from './components/AdminPageComp/RemoveMovies'
+import RemoveMovies from './components/AdminPageComp/ShowDetailsPage'
+import RemoveMoviesPage from './components/AdminPageComp/RemoveMoviesPage'
+import ShowDetailsPage from './components/AdminPageComp/ShowDetailsPage'
+import BookPage from './pages/BookPage'
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
+    path: 'book/:movie_id',
+    element: <BookPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
     path: 'admin',
     element: <AdminRoutePage />,
     errorElement: <ErrorPage />,
@@ -46,11 +53,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'details',
-        element: <DetailsPage />
+        element: <ShowDetailsPage />
       },
       {
         path: 'removeMovies',
-        element: <RemoveMovies />
+        element: <RemoveMoviesPage />
       }
     ]
   }

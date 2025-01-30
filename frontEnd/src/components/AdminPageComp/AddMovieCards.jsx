@@ -106,6 +106,12 @@ const AddMovieCards = ({movie}) => {
                 className: 'custom-toast',
                 progressClassName: 'custom-progress-bar-fail',
             });
+        }finally{
+            setMovieData({
+                movie_id: '',
+                show_date_and_time: '',
+                hall: '',
+            });
         }
 
         console.log(movieData.movie_id);
@@ -145,7 +151,7 @@ const AddMovieCards = ({movie}) => {
                     <FontAwesomeIcon icon={faPlus} />
                     <span className=''>Add</span>
                 </button>
-                <button onClick={() => setAddTheMovie(false)} className='flex justify-center items-center gap-2 bg-gray-900 text-gray-500 rounded px-4 py-2 hover:text-gray-300'>
+                <button onClick={() => setAddTheMovie(false)} type='button' className='flex justify-center items-center gap-2 bg-gray-900 text-gray-500 rounded px-4 py-2 hover:text-gray-300'>
                 <FontAwesomeIcon icon={faXmark} />
                 <span className=''>Cancel</span>
                 </button>

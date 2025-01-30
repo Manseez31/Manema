@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='h-[2px] w-full bg-gradient-to-r from-transparent via-yellow-500 to-transparent absolute top-0 left-0'></div>
 
 
-        <div className="h-auto w-full flex justify-around items-center mt-4">
+        {/* <div className="h-auto w-full flex justify-around items-center mt-4">
           <div>
             <h1 className='text-xl font-bold mb-2'>Technologies Used</h1>
             <ul className='text-sm'>
@@ -44,30 +44,62 @@ const Footer = () => {
           <div>
             <h1 className='text-xl font-bold mb-2'>Social Links</h1>
             <ul className='text-sm'>
-              <a href="" target='_blank' className='hover:text-yellow-500'>
+              <div className='hover:text-yellow-500 mb-2'>
                 <li>
-                  <FontAwesomeIcon icon={faLink} />
-                  <span className='ml-1'>FaceBook</span>
+                  <div className='text-gray-300'>
+                    <FontAwesomeIcon icon={faLink} />
+                    <span className='ml-1'>FaceBook</span>
+                  </div>
+                  <div className='h-auto flex justify-center items-center gap-2 text-sm'>
+                    <a href='https://www.facebook.com/justin.sane.3382118' target='_blank' className='hover:text-white hover:cursor-pointer'>Manseez</a>
+                    <a href='https://www.facebook.com/profile.php?id=100026748006104' target='_blank' className='hover:text-white hover:cursor-pointer'>Pranaya</a>
+                    <a href='https://www.facebook.com/profile.php?id=100010478628857' target='_blank' className='hover:text-white hover:cursor-pointer'>Riju</a>
+                    <a href='https://www.facebook.com/sawlown77' target='_blank' className='hover:text-white hover:cursor-pointer'>Salon</a>
+                  </div>
                 </li>
-              </a>
-              <a href="" target='_blank' className='hover:text-yellow-500'>
+              </div>
+              <div className='hover:text-yellow-500 mb-2'>
                 <li>
-                  <FontAwesomeIcon icon={faLink} />
-                  <span className='ml-1'>Instagram</span>
+                  <div className='text-gray-300'>
+                    <FontAwesomeIcon icon={faLink} />
+                    <span className='ml-1'>Instagram</span>
+                  </div>
+                  <div className='h-auto flex justify-center items-center gap-2 text-sm'>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Manseez</a>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Pranaya</a>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Riju</a>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Salon</a>
+                  </div>
                 </li>
-              </a>
-              <a href="" target='_blank' className='hover:text-yellow-500'>
+              </div>
+              <div className='hover:text-yellow-500 mb-2'>
                 <li>
-                  <FontAwesomeIcon icon={faLink} />
-                  <span className='ml-1'>GitHub</span>
+                  <div className='text-gray-300'>
+                    <FontAwesomeIcon icon={faLink} />
+                    <span className='ml-1'>Github</span>
+                  </div>
+                  <div className='h-auto flex justify-center items-center gap-2 text-sm'>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Manseez</a>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Pranaya</a>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Riju</a>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Salon</a>
+                  </div>
                 </li>
-              </a>
-              <a href="" target='_blank' className='hover:text-yellow-500'>
+              </div>
+              <div className='hover:text-yellow-500 mb-2'>
                 <li>
-                  <FontAwesomeIcon icon={faLink} />
-                  <span className='ml-1'>LinkedIn</span>
+                  <div className='text-gray-300'>
+                    <FontAwesomeIcon icon={faLink} />
+                    <span className='ml-1'>Linked In</span>
+                  </div>
+                  <div className='h-auto flex justify-center items-center gap-2 text-sm'>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Manseez</a>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Pranaya</a>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Riju</a>
+                    <a href='' target='_blank' className='hover:text-white hover:cursor-pointer'>Salon</a>
+                  </div>
                 </li>
-              </a>
+              </div>
             </ul>
           </div>
           <div>
@@ -95,10 +127,10 @@ const Footer = () => {
           </div>
 
 
-        </div>
+        </div> */}
 
 
-      <div className='h-auto w-full flex flex-col justify-center items-center gap-12 mt-24'>
+      <div className='h-auto w-full flex flex-col justify-center items-center gap-12'>
           <h1 className='text-3xl font-bold'>Developed By</h1>
           <div className='h-auto w-full flex justify-around font-playwrite'>
               <h3 className='hover:text-yellow-400 transition-hover duration-150 cursor-default '>Manseez Bahadur Pradhan</h3>

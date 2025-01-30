@@ -1,19 +1,31 @@
-import { useContext } from "react"
+import { useContext, useEffect, useLayoutEffect } from "react"
 import { AuthContext } from "../handles/AuthProvider"
 import HomePage from "./HomePage";
-import UserHomePage from "./UserHomePage";
 
 const UserOrHomeRouter = () => {
 
     const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext);
 
+    useLayoutEffect(() => {
+      const access = localStorage.getItem('accessToken');
+      const refresh = localStorage.getItem('refreshToken');
+      
+      if(access && refresh){
+        console.log('logged in');
+        setIsAuthenticated(true);
+      }else{
+        setIsAuthenticated(false);
+      }
+    }, []); 
+
   return (
     <>
-        {isAuthenticated ? (
+        {/* {isAuthenticated ? (
             <UserHomePage />
         ): (
             <HomePage />
-        )}
+        )} */}
+        <HomePage />
     </>
   )
 }

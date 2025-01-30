@@ -1,33 +1,35 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { apiKey } from '../handles/apiHandler';
 import axios from 'axios';
 import CastsCard from '../components/MovieDetailsComp/CastsCard';
 import Lenis from '@studio-freight/lenis';
+import { AuthContext } from '../handles/AuthProvider';
 
 const MovieDetailsPage = () => {
 
     const { movie_id } = useParams();
     const [movie, setMovie] = useState({});
     const [casts, setCasts] = useState([]);
+    const [youtubeUrl, setYoutubeURL] = useState('');
 
     const navigate = useNavigate();
 
     useEffect(() => {
 
-        const lenis = new Lenis({
+        // const lenis = new Lenis({
             
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
-        })
+        //     duration: 1.2,
+        //     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        //     smooth: true,
+        // })
 
-        function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        }
+        // function raf(time) {
+        //     lenis.raf(time)
+        //     requestAnimationFrame(raf)
+        // }
 
-        requestAnimationFrame(raf)
+        // requestAnimationFrame(raf)
 
         
 
@@ -38,10 +40,12 @@ const MovieDetailsPage = () => {
                 
                 const response = await axios.get(movie_by_id_url);
                 setMovie(response.data);
-                console.log(response.data);
+                // console.log(response.data);
 
                 const creditRespone = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${apiKey}`);
-                console.log(creditRespone.data.cast);
+                const trailerResponse = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${apiKey}`);
+                const youtubeUrl = `https://www.youtube.com/watch?v=${trailerResponse.data.results[0].key}`;
+                setYoutubeURL(youtubeUrl);
                 setCasts(creditRespone.data.cast);
             } 
     
@@ -51,12 +55,14 @@ const MovieDetailsPage = () => {
         }
 
         
-        return () => {
-            lenis.destroy()
-        }
+        // return () => {
+        //     lenis.destroy()
+        // }
 
 
     }, []);
+
+    const {isAuthenticated, setIsAutheticated} = useContext(AuthContext);
 
   return (
     <>
@@ -69,8 +75,7 @@ const MovieDetailsPage = () => {
             <div className='h-[80vh] w-1/2 flex flex-col gap-6 relative z-[40]'>
                 <h1 className='text-5xl'>{movie.title ? movie.title : "No Title Available"}</h1>
                 <div>
-                    <button className='px-6 py-1 border border-orange-500 rounded-xl hover:bg-orange-500 hover:text-black transition-hover duration-200'>Watch Trailer</button>
-                    {/* <button>Watch Trailer</button> */}
+                    <a target='_blank' href={youtubeUrl} className='px-6 py-1 border border-orange-500 rounded-xl hover:bg-orange-500 hover:text-black transition-hover duration-200'>Watch Trailer</a>
                 </div>
                 <div className='h-auto'>
                     <p>{movie.overview ? movie.overview : 'No overview availabe' }</p>
@@ -88,9 +93,10 @@ const MovieDetailsPage = () => {
                 </div>
 
                 <div className='flex gap-2'>
-                    <button onClick={() => navigate(-1)} className='px-4 py-2 bg-gray-900 rounded'>Go Back</button>
-                    <Link to={'/'} className='px-4 py-2 bg-gray-900 rounded'>Home Page</Link>
+                    <button onClick={() => navigate(-1)} className='px-4 py-2 bg-gray-900 rounded hover:text-white mr-2'>Go Back</button>
+                    <Link to={'/'} className='px-4 py-2 bg-gray-900 rounded hover:text-white'>Home Page</Link>
                 </div>
+                
                 
             </div>
 

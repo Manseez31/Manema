@@ -10,7 +10,10 @@ const MovieSection = () => {
   const scrollIntoRef = useRef(null);
   const movieCardsRef = useRef(null);
 
-  const {animationPlayed, setAnimationPlayed} = useContext(AuthContext);
+  //animation solely for now_playing link
+  const nowPlayingRef = useRef(null);
+
+  const {isAuthenticated, animationPlayed, setAnimationPlayed} = useContext(AuthContext);
 
   useGSAP(() => {
 
@@ -27,7 +30,7 @@ const MovieSection = () => {
         duration: 1,
         ease: 'power1.out',
       })
-  
+
       movieSectionTimeline.fromTo(movieCardsRef.current, {
         opacity: 0,
       }, {
@@ -57,6 +60,9 @@ const MovieSection = () => {
           <NavLink className={`hover:text-gray-200`} to={'popular'}>Popular Movies</NavLink>
           <NavLink className={`hover:text-gray-200`} to={'top_rated'}>Top Rated Movies</NavLink>
           <NavLink className={`hover:text-gray-200`} to={'upcoming'}>Upcoming Movies</NavLink>
+          {isAuthenticated && (
+            <NavLink className={`hover:text-gray-200`} to={'now_playing'}>Now Playing</NavLink>
+          )}
         </div>
 
         <div ref={movieCardsRef}>
@@ -66,4 +72,4 @@ const MovieSection = () => {
   )
 }
 
-export default MovieSection
+export default MovieSection;

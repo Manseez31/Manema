@@ -2,40 +2,42 @@ import Header from '../components/HomePageComp/Header'
 import Banner from '../components/HomePageComp/Banner'
 import MovieSection from '../components/HomePageComp/MovieSection'
 import Footer from '../components/HomePageComp/Footer'
-import { createContext, useEffect, useRef, useState } from 'react'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 
-import Lenis from '@studio-freight/lenis'
+import Lenis from '@studio-freight/lenis';
 
-
-export const MovieContext = createContext('');
+export const MovieContext = createContext({
+  contextMovies: [],
+  setContextMovies: () => {},
+});
 
 export const FormShowContext = createContext('');
 
 
 const HomePage = () => {
-
   const [showForm, setShowForm] = useState(false);
 
+  // for smooth scrolling but it presented lag, so commented.
 
-  useEffect(() => {
-    const lenis = new Lenis({
+  // useEffect(() => {
+  //   const lenis = new Lenis({
 
-      duration: 1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true,
-    })
+  //     duration: 0.2,
+  //     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  //     smooth: true,
+  //   })
 
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
+  //   function raf(time) {
+  //     lenis.raf(time)
+  //     requestAnimationFrame(raf)
+  //   }
 
-    requestAnimationFrame(raf)
+  //   requestAnimationFrame(raf)
 
-    return () => {
-      lenis.destroy()
-    }
-  }, []);
+  //   return () => {
+  //     lenis.destroy()
+  //   }
+  // }, []);
 
   const [contextMovies, setContextMovies] = useState([]);
 

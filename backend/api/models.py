@@ -38,3 +38,9 @@ class Seat(models.Model):
     show = models.ForeignKey(ShowMovies, on_delete=models.CASCADE, related_name='seats')
     seat_number = models.CharField(max_length=10)
     is_booked = models.BooleanField(default=False)
+
+
+class UserTicket(models.Model):
+    seat_nos = models.JSONField(default=list)
+    booked_at = models.DateTimeField(auto_now_add=True)
+    user_id = models.IntegerField()

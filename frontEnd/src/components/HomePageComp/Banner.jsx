@@ -101,7 +101,7 @@ const Banner = () => {
   }, []);
 
 
-
+  const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext);
 
   return (
     <div className='h-[75vh] w-full relative -top-[8vh] px-4 py-2 z-[80]'>
@@ -111,8 +111,10 @@ const Banner = () => {
         <p className='line-clamp-5'>{displayMovie?.overview ? displayMovie.overview : "Movie description Unavailable"}</p>
 
         <div>
-          <button onClick={() => {setShowForm(true); console.log('set to true')}} className='py-2 px-4 bg-yellow-600 text-gray-800 rounded hover:px-5 active:px-4 hover:bg-yellow-500 transition-hover duration-150'>Get Started</button>
-          <button onClick={changeMovie} className='ml-4 py-1 hover:border-l hover:border-r active:text-yellow-500 hover:border-yellow-500 px-4 h-[80%] transition-hover duration-100 hover:text-gray-200 rounded active:border-orange-500'>View Another</button>
+          {!isAuthenticated && (
+            <button onClick={() => setShowForm(true)} className='py-2 px-4 bg-yellow-600 text-gray-800 rounded hover:px-5 active:px-4 hover:bg-yellow-500 transition-hover duration-150'>Get Started</button>
+          )}
+          <button onClick={changeMovie} className={`${!isAuthenticated ? 'ml-4' : 'border-l'} py-1 hover:border-l hover:border-r active:text-yellow-500 hover:border-yellow-500 px-4 h-[80%] transition-hover duration-100 hover:text-gray-200 rounded active:border-orange-500`}>View Another</button>
         </div>
       </div>
 
